@@ -1,0 +1,135 @@
+/*warna dan tema*/
+body {
+  background-color: #e7f7f5;
+  color: #1d4c4f;
+  font-family: "Segoe UI", sans-serif;
+}
+
+h1,
+h2,
+h3 {
+  color: #006e6d;
+}
+
+/*button styling*/
+button,
+.stButton > button {
+  background-color: #006e6d;
+  color: white;
+  border-radius: 8px;
+  padding: 8px 16px;
+}
+
+/*sidebar position & padding*/
+[data-testid="stSidebar"] > div:first-child {
+  padding-top: 0px;
+  margin-top: -20px;
+  padding-left: 20px;
+  padding-right: 15px;
+}
+
+/*lamding page dan judul deskripsi*/
+.landing-text {
+  flex: 1;
+  min-width: 300px;
+}
+
+.landing-title {
+  font-size: 2.2rem;
+  font-weight: bold;
+  color: #006e6d;
+  margin-bottom: 10px;
+  margin-top: 5px;
+}
+
+.landing-desc {
+  font-size: 17px;
+  color: #444;
+  margin-bottom: 10px;
+}
+
+.landing-buttons-left {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+/* card style */
+.card {
+  background-color: #ffffff;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.07);
+  border-left: 5px solid #006e6d;
+}
+
+/* Header for each card section */
+.card h4,
+.card h5 {
+  margin-top: 0;
+  color: #006e6d;
+}
+
+.card ul {
+  padding-left: 20px;
+}
+
+.card p {
+  font-size: 15px;
+  color: #333333;
+}
+
+.full-card {
+  background-color: white;
+  padding: 20px 25px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.07);
+  margin-bottom: -5px;
+  margin-top: 5px;
+}
+
+/* Sembunyikan lingkaran radio dan SVGnya */
+[data-testid="stRadio"] svg,
+[data-testid="stRadio"] input[type="radio"],
+[data-testid="stRadio"] [data-baseweb="radio"] > div:first-child {
+  display: none !important;
+}
+
+/*/* Style dasar untuk card hasil kombinasi */
+.kombinasi-card {
+  border-left: 5px solid #006e6d; /* hijau tosca */
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
+  background-color: #f9fffa;
+}
+.kombinasi-card.odd {
+  background-color: #e8f8f7; /* Warna latar ganjil - lembut */
+}
+
+.kombinasi-card.even {
+  background-color: #fafffb; /* Warna latar genap - sedikit lebih hijau */
+}
+
+.card.ringkasan-kumpulan {
+  background-color: #e8f8f7;
+  padding: 18px 24px;
+  margin-bottom: 16px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
+  font-size: 16px;
+  color: #333;
+  line-height: 1.7;
+}
+/* e9f9f8 */
+
+/* e8f8f7 */
+
+/* e7f6f5 */
+/* def4f2 */

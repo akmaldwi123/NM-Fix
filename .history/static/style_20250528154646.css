@@ -1,0 +1,38 @@
+/* style.css */
+
+body {
+    background-color: #e7f7f5;
+    color: #1d4c4f;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+h1, h2, h3 {
+    color: #006e6d;
+}
+
+button, .stButton > button {
+    background-color: #00b4aa;
+    color: white;
+    border-radius: 8px;
+    padding: 8px 16px;
+}
+
+/* Sidebar position fix: kiri, kanan, atas */
+[data-testid="stSidebar"] > div:first-child {
+    padding-top: 0px;         /* ini membuat sidebar mulai dari atas */
+    margin-top: -40px;        /* ini akan menarik seluruh kontennya ke atas */
+    padding-left: 20px;
+    padding-right: 15px;
+}
+
+/* Custom header container */
+.custom-header {
+    background-color: #006e6d;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 1.3;
+}
