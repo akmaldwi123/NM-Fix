@@ -149,24 +149,13 @@ elif st.session_state.global_page == "FP-Growth":
 
         st.markdown(
             """
-        <style>
-        .inline-code {
-            background-color: #e7f4ec;
-            color: #228B22;
-            font-family: monospace;
-            padding: 2px 6px;
-            border-radius: 5px;
-            font-size: 13px;
-        }
-        </style>
-
-        <div>
+        <div class='catatan-upload'>
         <b>Catatan:</b><br>
         File yang diunggah harus memiliki kolom:
         <ul>
-            <li><span class="inline-code">no_transaksi</span></li>
-            <li><span class="inline-code">nama_produk</span> atau <span class="inline-code">kategori_produk</span></li>
-            <li><span class="inline-code">tanggal</span> bersifat opsional untuk filter berdasarkan waktu</li>
+            <li>no_transaksi</li>
+            <li>nama_produk atau kategori_produk</li>
+            <li>tanggal bersifat opsional untuk filter berdasarkan waktu</li>
         </ul>
         </div>
         """,
