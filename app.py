@@ -55,11 +55,11 @@ elif st.session_state.global_page == "Sales and Inventory":
     )
 
     components.iframe(
-        "https://app.powerbi.com/reportEmbed?reportId=c16a7ca3-f60b-4f8b-90d3-a8cbcc9dc351&autoAuth=true&ctid=90affe0f-c2a3-4108-bb98-6ceb4e94ef15&navContentPaneEnabled=false&filterPaneEnabled=false&toolbarHidden=true",
-        height=540,
+        "https://app.powerbi.com/view?r=eyJrIjoiYjViM2Q4NzMtM2U0Ny00OWM4LWJjNjUtZTFjN2M5YTEzODAwIiwidCI6IjkwYWZmZTBmLWMyYTMtNDEwOC1iYjk4LTZjZWI0ZTk0ZWYxNSIsImMiOjEwfQ%3D%3D&navContentPaneEnabled=false&filterPaneEnabled=false&toolbarHidden=true",
+        height=600,
         width=1200,
     )
-
+# &navContentPaneEnabled=false&filterPaneEnabled=false&toolbarHidden=true"
 # ========== FP-GROWTH PAGE ==========
 elif st.session_state.global_page == "FP-Growth":
     # Inisialisasi session state
@@ -267,6 +267,7 @@ elif st.session_state.global_page == "FP-Growth":
             unsafe_allow_html=True,
         )
 
+        st.success("Klik tombol dibawah untuk menjalankan analisis")
         if st.button("Mulai Analisis"):
             with st.spinner("Sedang memproses FP-Growth..."):
                 try:
@@ -390,7 +391,7 @@ elif st.session_state.global_page == "FP-Growth":
                         # RINGKASAN KOMBINASI 1 ➞ 1 TANPA PENJELASAN (DALAM SATU CARD)
                         st.markdown("---")
                         st.markdown(
-                            "**Ringkasan Kombinasi Produk 1 ➞ 1 (Tanpa Penjelasan)**"
+                            "**Rekomendasi Kombinasi Produk 1 ➞ 1 (Tanpa Penjelasan)**"
                         )
 
                         # Ambil semua data ringkasan dan urutkan berdasarkan indeks
@@ -416,7 +417,9 @@ elif st.session_state.global_page == "FP-Growth":
 
                         st.markdown("<br>", unsafe_allow_html=True)
                         # Expander untuk tampilkan lebih banyak
-                        with st.expander("**Tampilkan Semua Ringkasan**"):
+                        with st.expander(
+                            "**Tampilkan Semua Aturan (Tanpa Penjelasan)**"
+                        ):
                             semua_text = ""
                             for idx, row in ringkasan_rows.iterrows():
                                 produk_awal = ", ".join(row["antecedents"])
