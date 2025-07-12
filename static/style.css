@@ -127,6 +127,22 @@ button,
   color: #333;
   line-height: 1.7;
 }
+
+.catatan-box {
+  font-size: 16px;
+  line-height: 1.1;
+}
+
+.catatan-box ul {
+  margin-left: 20px;
+  padding-left: 0;
+}
+
+.catatan-box li {
+  list-style-type: disc;
+  margin-left: 20px;
+}
+
 /* e9f9f8 */
 
 /* e8f8f7 */

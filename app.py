@@ -144,15 +144,21 @@ elif st.session_state.global_page == "FP-Growth":
         uploaded_file = st.file_uploader(
             "**Unggah file Excel atau CSV**", type=["csv", "xlsx"]
         )
-
+        
         st.markdown(generate_download_link("template.xlsx"), unsafe_allow_html=True)
-
+        
         st.markdown(
             """
-            **Catatan:**  
-            File yang diunggah harus memiliki kolom <code>no_transaksi</code> dan <code>nama_produk</code> atau <code>kategori_produk</code>.<br>
-            Kolom <code>tanggal</code> bersifat opsional.
-            """,
+        <div class="catatan-box">
+            <strong>Catatan:</strong><br><br>
+            File yang diunggah harus memiliki kolom:
+            <ul>
+                <li><code>no_transaksi</code> </li>
+                <li><code>nama_produk</code> atau <code>kategori_produk</code></li>
+                <li><code>tanggal</code> bersifat opsional untuk filter berdasarkan waktu</li>
+            </ul>
+        </div>
+        """,
             unsafe_allow_html=True,
         )
 
