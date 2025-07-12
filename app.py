@@ -152,7 +152,7 @@ elif st.session_state.global_page == "FP-Growth":
         <div class='catatan-upload'>
         <b>Catatan:</b><br>
         File yang diunggah harus memiliki kolom:
-        <ul class='kolom-list'>
+        <ul>
             <li>no_transaksi</li>
             <li>nama_produk atau kategori_produk</li>
             <li>tanggal bersifat opsional untuk filter berdasarkan waktu</li>
