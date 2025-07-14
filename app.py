@@ -150,8 +150,13 @@ elif st.session_state.global_page == "FP-Growth":
         st.markdown(
             """
         <div class='catatan-upload'>
-        <b>Catatan:</b><br>
-        File yang diunggah harus memiliki kolom no_transaksi, nama_produk atau kategori_produk, tanggal bersifat opsional untuk filter berdasarkan waktu
+            <strong>Catatan:</strong><br>
+            File yang diunggah harus memiliki kolom berikut:<br>
+            <ul class='kolom-list'>
+                <li><span class="highlight-kolom">no_transaksi</span></li>
+                <li><span class="highlight-kolom">nama_produk</span> atau <span class="highlight-kolom">kategori_produk</span></li>
+                <li><span class="highlight-kolom">tanggal</span> (opsional untuk filter berdasarkan waktu)</li>
+            </ul>
         </div>
         """,
             unsafe_allow_html=True,
