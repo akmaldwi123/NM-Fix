@@ -228,7 +228,7 @@ elif st.session_state.global_page == "FP-Growth":
                 st.session_state["filtered_df"] = df_view
             else:
                 st.warning(
-                    "📅 Silakan pilih rentang tanggal lengkap (awal dan akhir) untuk memfilter data."
+                    "Silakan pilih rentang tanggal lengkap (awal dan akhir) untuk memfilter data."
                 )
                 st.stop()
         else:
