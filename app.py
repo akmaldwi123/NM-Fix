@@ -211,24 +211,32 @@ elif st.session_state.global_page == "FP-Growth":
 
         if "tanggal" in df_view.columns:
             tanggal_tersedia = sorted(pd.to_datetime(df_view["tanggal"]).unique())
-            tgl_start, tgl_end = st.date_input(
+            tanggal_range = st.date_input(
                 "**Filter tanggal**", (min(tanggal_tersedia), max(tanggal_tersedia))
             )
-            tgl_start = pd.to_datetime(tgl_start)
-            tgl_end = pd.to_datetime(tgl_end)
-            df_view["tanggal"] = pd.to_datetime(df_view["tanggal"])
-            df_view = df_view[
-                (df_view["tanggal"] >= tgl_start) & (df_view["tanggal"] <= tgl_end)
-            ]
-            df_view["tanggal"] = df_view["tanggal"].dt.date
-            df_view = df_view.sort_values("tanggal")
-            st.session_state["filtered_df"] = df_view
+
+            if isinstance(tanggal_range, tuple) and len(tanggal_range) == 2:
+                tgl_start, tgl_end = pd.to_datetime(tanggal_range[0]), pd.to_datetime(
+                    tanggal_range[1]
+                )
+                df_view["tanggal"] = pd.to_datetime(df_view["tanggal"])
+                df_view = df_view[
+                    (df_view["tanggal"] >= tgl_start) & (df_view["tanggal"] <= tgl_end)
+                ]
+                df_view["tanggal"] = df_view["tanggal"].dt.date
+                df_view = df_view.sort_values("tanggal")
+                st.session_state["filtered_df"] = df_view
+            else:
+                st.warning(
+                    "📅 Silakan pilih rentang tanggal lengkap (awal dan akhir) untuk memfilter data."
+                )
+                st.stop()
         else:
             st.session_state["filtered_df"] = df_view
 
-        tampilkan_kolom = ["no_transaksi", kolom_analisis] + (
-            ["tanggal"] if "tanggal" in df_view.columns else []
-        )
+        tampilkan_kolom = ["no_transaksi", kolom_analisis]
+        if "tanggal" in df_view.columns:
+            tampilkan_kolom.append("tanggal")
 
         try:
             df_tampil = df_view[tampilkan_kolom].copy()
