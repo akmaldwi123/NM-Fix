@@ -6,6 +6,13 @@ import pandas as pd
 import base64
 from PIL import Image
 
+
+def format_frozenset(fset):
+    if isinstance(fset, frozenset):
+        return ", ".join(sorted(fset))
+    return fset
+
+
 st.set_page_config(layout="wide")
 
 # CSS #
@@ -304,6 +311,9 @@ elif st.session_state.global_page == "FP-Growth":
                         view_items = freq_items.rename(
                             columns={"itemsets": "Kombinasi Produk"}
                         ).reset_index(drop=True)
+                        view_items["Kombinasi Produk"] = view_items[
+                            "Kombinasi Produk"
+                        ].apply(format_frozenset)
                         view_items.index = range(1, len(view_items) + 1)
                         view_items.index.name = "No"
                         st.dataframe(view_items, use_container_width=True)
@@ -328,6 +338,12 @@ elif st.session_state.global_page == "FP-Growth":
                             "Confidence",
                             "Lift",
                         ]
+                        view_rules["Produk Awal"] = view_rules["Produk Awal"].apply(
+                            format_frozenset
+                        )
+                        view_rules["Produk Disarankan"] = view_rules[
+                            "Produk Disarankan"
+                        ].apply(format_frozenset)
                         view_rules.index = range(1, len(view_rules) + 1)
                         view_rules.index.name = "No"
                         st.dataframe(view_rules, use_container_width=True)
@@ -382,6 +398,12 @@ elif st.session_state.global_page == "FP-Growth":
                             "Confidence",
                             "Lift",
                         ]
+                        simp["Produk Awal"] = simp["Produk Awal"].apply(
+                            format_frozenset
+                        )
+                        simp["Produk Disarankan"] = simp["Produk Disarankan"].apply(
+                            format_frozenset
+                        )
                         simp.index = range(1, len(simp) + 1)
                         simp.index.name = "No"
                         st.dataframe(simp, use_container_width=True)
