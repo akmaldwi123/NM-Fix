@@ -240,6 +240,7 @@ elif st.session_state.global_page == "FP-Growth":
 
         try:
             df_tampil = df_view[tampilkan_kolom].copy()
+            df_tampil = df_tampil.rename(columns=lambda x: x.replace("_", " ").title())
             df_tampil.index = range(1, len(df_tampil) + 1)
             df_tampil.index.name = "No"
             st.dataframe(df_tampil, use_container_width=True)
