@@ -18,7 +18,7 @@ st.set_page_config(layout="wide")
 # CSS #
 with open("static/style.css") as f:
     st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
-
+adssad
 # ===== GLOBAL PAGE =====
 if "global_page" not in st.session_state:
     st.session_state.global_page = "Beranda"
