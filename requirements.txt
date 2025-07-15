@@ -1,5 +1,4 @@
 streamlit
 pandas
 mlxtend
-mysql-connector-python
 openpyxl
