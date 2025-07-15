@@ -3,6 +3,10 @@ from mlxtend.frequent_patterns import fpgrowth, association_rules
 import pandas as pd
 
 
+def format_frozenset(x):
+    return ", ".join(sorted(x)) if isinstance(x, frozenset) else str(x)
+
+
 def run_fp_growth(df_transaksi, kolom_produk="nama_produk"):
     # Hitung total transaksi unik
     total_transaksi = df_transaksi["no_transaksi"].nunique()
@@ -50,11 +54,18 @@ def run_fp_growth(df_transaksi, kolom_produk="nama_produk"):
         by=["Panjang Kombinasi", "Frekuensi", "support"], ascending=[True, False, False]
     )
 
+    # Format itemsets agar tidak tampil sebagai frozenset
+    freq_items["itemsets"] = freq_items["itemsets"].apply(format_frozenset)
+
     # Buat aturan asosiasi
     rules = association_rules(
         freq_items, metric="confidence", min_threshold=min_confidence
     )
     rules = rules[rules["lift"] > 1]
+
+    # Format kolom antecedents dan consequents agar tidak tampil sebagai frozenset
+    rules["antecedents"] = rules["antecedents"].apply(format_frozenset)
+    rules["consequents"] = rules["consequents"].apply(format_frozenset)
 
     # Format aturan menjadi string readable
     rules["rules"] = (
