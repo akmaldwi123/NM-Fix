@@ -7,7 +7,7 @@ import base64
 from PIL import Image
 
 st.set_page_config(
-    page_title="Nuhsantara Merchandise     ",
+    page_title="Nuhsantara  Merchandise     ",
     page_icon="https://raw.githubusercontent.com/akmaldwi123/NM-Fix/main/static/logoo.png",
     layout="wide",
 )
