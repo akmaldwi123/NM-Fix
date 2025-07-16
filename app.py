@@ -7,7 +7,7 @@ import base64
 from PIL import Image
 
 st.set_page_config(
-    page_title="Nuhsantara Merchandise",
+    page_title="Nuhsantara Merchandise     ",
     page_icon="https://raw.githubusercontent.com/akmaldwi123/NM-Fix/main/static/logoo.png",
     layout="wide",
 )
@@ -26,8 +26,11 @@ if "global_page" not in st.session_state:
 if "page" not in st.session_state:
     st.session_state.page = "Upload File"
 
+
 # ===== Fungsi untuk update query params secara lengkap =====
-def update_query_params(global_page=None, page=None, remove_keys=None, extra_params=None):
+def update_query_params(
+    global_page=None, page=None, remove_keys=None, extra_params=None
+):
     params = st.query_params.to_dict()
 
     if remove_keys:
@@ -41,6 +44,7 @@ def update_query_params(global_page=None, page=None, remove_keys=None, extra_par
     if extra_params:
         params.update(extra_params)
     st.query_params.from_dict(params)
+
 
 def format_frozenset(fset):
     if isinstance(fset, frozenset):
@@ -72,13 +76,19 @@ if st.session_state.global_page == "Beranda":
         with col1:
             if st.button("Sales and Inventory", key="btn_bi"):
                 st.session_state.global_page = "Sales and Inventory"
-                update_query_params(global_page="Sales and Inventory", remove_keys=["page", "tgl_start", "tgl_end"])
+                update_query_params(
+                    global_page="Sales and Inventory",
+                    remove_keys=["page", "tgl_start", "tgl_end"],
+                )
                 st.rerun()
         with col2:
             if st.button("Analisis FP-Growth", key="btn_fp"):
                 st.session_state.global_page = "FP-Growth"
                 st.session_state.page = "Upload File"
-                update_query_params(global_page="FP-Growth", remove_keys=["page", "tgl_start", "tgl_end"])
+                update_query_params(
+                    global_page="FP-Growth",
+                    remove_keys=["page", "tgl_start", "tgl_end"],
+                )
                 st.rerun()
         st.markdown("</div>", unsafe_allow_html=True)
 
@@ -90,7 +100,9 @@ if st.session_state.global_page == "Beranda":
 elif st.session_state.global_page == "Sales and Inventory":
     if st.button("← Kembali ke Beranda"):
         st.session_state.global_page = "Beranda"
-        update_query_params(global_page="Beranda", remove_keys=["page", "tgl_start", "tgl_end"])
+        update_query_params(
+            global_page="Beranda", remove_keys=["page", "tgl_start", "tgl_end"]
+        )
         st.rerun()
 
     components.iframe(
@@ -174,7 +186,9 @@ elif st.session_state.global_page == "FP-Growth":
 
     if st.button("← Kembali ke Beranda"):
         st.session_state.global_page = "Beranda"
-        update_query_params(global_page="Beranda", remove_keys=["page", "tgl_start", "tgl_end"])
+        update_query_params(
+            global_page="Beranda", remove_keys=["page", "tgl_start", "tgl_end"]
+        )
         st.rerun()
 
     # ========== HALAMAN: UPLOAD FILE ==========
