@@ -207,9 +207,9 @@ elif st.session_state.global_page == "FP-Growth":
             <strong>Catatan:</strong><br>
             File yang diunggah harus memiliki kolom berikut:<br>
             <ul class='kolom-list'>
-                <li><span class="highlight-kolom">no_transaksi</span></li>
-                <li><span class="highlight-kolom">nama_produk</span> atau <span class="highlight-kolom">kategori_produk</span></li>
-                <li><span class="highlight-kolom">tanggal</span> (opsional untuk filter berdasarkan waktu)</li>
+                <li><span class="highlight-kolom">NO TRANSAKSI</span></li>
+                <li><span class="highlight-kolom">NAMA PRODUK</span> atau <span class="highlight-kolom">KATEGORI PRODUK</span></li>
+                <li><span class="highlight-kolom">TANGGAL</span> (opsional untuk filter berdasarkan waktu)</li>
             </ul>
         </div>
         """,
@@ -224,17 +224,27 @@ elif st.session_state.global_page == "FP-Growth":
                     if uploaded_file.name.endswith(".csv")
                     else pd.read_excel(uploaded_file)
                 )
+                rename_map = {
+                    "NO TRANSAKSI": "no_transaksi",
+                    "NAMA PRODUK": "nama_produk",
+                    "KATEGORI PRODUK": "kategori_produk",
+                    "TANGGAL": "tanggal",
+                }
+                df_uploaded.rename(
+                    columns=lambda x: rename_map.get(x.strip().upper(), x), inplace=True
+                )
 
                 if df_uploaded.empty:
                     st.error("File yang diunggah kosong.")
                     st.stop()
 
                 if "no_transaksi" not in df_uploaded.columns:
-                    st.error("Kolom `no_transaksi` tidak ditemukan.")
+                    st.error("Kolom `NO TRANSAKSI` tidak ditemukan.")
                     st.stop()
 
                 if kolom_analisis not in df_uploaded.columns:
-                    st.error(f"Kolom `{kolom_analisis}` tidak ditemukan.")
+                    kolom_hilang = kolom_analisis.replace("_", " ").upper()
+                    st.error(f"Kolom {kolom_hilang} tidak ditemukan.")
                     st.stop()
 
                 selected_cols = ["no_transaksi", kolom_analisis]
@@ -244,7 +254,10 @@ elif st.session_state.global_page == "FP-Growth":
                 df_filtered = df_uploaded[selected_cols].copy()
                 st.session_state.df_uploaded = df_filtered
                 st.success("File berhasil diunggah!")
-                preview_df = df_filtered.head().copy()
+                preview_df = df_filtered.head(10).copy()
+                preview_df.columns = [
+                    col.replace("_", " ").title() for col in preview_df.columns
+                ]
                 preview_df.index = range(1, len(preview_df) + 1)
                 preview_df.index.name = "No"
                 st.dataframe(preview_df)
