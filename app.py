@@ -350,7 +350,7 @@ elif st.session_state.global_page == "FP-Growth":
             unsafe_allow_html=True,
         )
 
-        st.success("Klik tombol dibawah untuk menjalankan analisis")
+        st.success("Klik tombol dibawah untuk memulai analisis")
         if st.button("Mulai Analisis"):
             with st.spinner("Sedang memproses FP-Growth..."):
                 try:
