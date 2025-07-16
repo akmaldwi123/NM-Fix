@@ -6,6 +6,41 @@ import pandas as pd
 import base64
 from PIL import Image
 
+st.set_page_config(
+    page_title="Nuhsantara Merchandise",
+    page_icon="https://raw.githubusercontent.com/akmaldwi123/NM-Fix/main/static/logoo.png",
+    layout="wide",
+)
+
+# ====== Gunakan st.query_params yang terbaru ======
+query_params = st.query_params
+
+if "global_page" in query_params:
+    st.session_state.global_page = query_params["global_page"]
+if "page" in query_params:
+    st.session_state.page = query_params["page"]
+
+# Inisialisasi default jika belum ada
+if "global_page" not in st.session_state:
+    st.session_state.global_page = "Beranda"
+if "page" not in st.session_state:
+    st.session_state.page = "Upload File"
+
+# ===== Fungsi untuk update query params secara lengkap =====
+def update_query_params(global_page=None, page=None, remove_keys=None, extra_params=None):
+    params = st.query_params.to_dict()
+
+    if remove_keys:
+        for key in remove_keys:
+            params.pop(key, None)
+
+    if global_page is not None:
+        params["global_page"] = global_page
+    if page is not None:
+        params["page"] = page
+    if extra_params:
+        params.update(extra_params)
+    st.query_params.from_dict(params)
 
 def format_frozenset(fset):
     if isinstance(fset, frozenset):
@@ -13,15 +48,10 @@ def format_frozenset(fset):
     return fset
 
 
-st.set_page_config(layout="wide")
-
 # CSS #
 with open("static/style.css") as f:
     st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
 
-# ===== GLOBAL PAGE =====
-if "global_page" not in st.session_state:
-    st.session_state.global_page = "Beranda"
 
 # ===== LANDING PAGE =====
 if st.session_state.global_page == "Beranda":
@@ -42,11 +72,13 @@ if st.session_state.global_page == "Beranda":
         with col1:
             if st.button("Sales and Inventory", key="btn_bi"):
                 st.session_state.global_page = "Sales and Inventory"
+                update_query_params(global_page="Sales and Inventory", remove_keys=["page", "tgl_start", "tgl_end"])
                 st.rerun()
         with col2:
             if st.button("Analisis FP-Growth", key="btn_fp"):
                 st.session_state.global_page = "FP-Growth"
                 st.session_state.page = "Upload File"
+                update_query_params(global_page="FP-Growth", remove_keys=["page", "tgl_start", "tgl_end"])
                 st.rerun()
         st.markdown("</div>", unsafe_allow_html=True)
 
@@ -56,10 +88,10 @@ if st.session_state.global_page == "Beranda":
 
 # ===== POWER BI PAGE =====
 elif st.session_state.global_page == "Sales and Inventory":
-    st.button(
-        "← Kembali ke Beranda",
-        on_click=lambda: st.session_state.update({"global_page": "Beranda"}),
-    )
+    if st.button("← Kembali ke Beranda"):
+        st.session_state.global_page = "Beranda"
+        update_query_params(global_page="Beranda", remove_keys=["page", "tgl_start", "tgl_end"])
+        st.rerun()
 
     components.iframe(
         "https://app.powerbi.com/view?r=eyJrIjoiYjViM2Q4NzMtM2U0Ny00OWM4LWJjNjUtZTFjN2M5YTEzODAwIiwidCI6IjkwYWZmZTBmLWMyYTMtNDEwOC1iYjk4LTZjZWI0ZTk0ZWYxNSIsImMiOjEwfQ%3D%3D&navContentPaneEnabled=false&filterPaneEnabled=false&toolbarHidden=true",
@@ -142,6 +174,7 @@ elif st.session_state.global_page == "FP-Growth":
 
     if st.button("← Kembali ke Beranda"):
         st.session_state.global_page = "Beranda"
+        update_query_params(global_page="Beranda", remove_keys=["page", "tgl_start", "tgl_end"])
         st.rerun()
 
     # ========== HALAMAN: UPLOAD FILE ==========
@@ -168,6 +201,7 @@ elif st.session_state.global_page == "FP-Growth":
         """,
             unsafe_allow_html=True,
         )
+        st.markdown("<br>", unsafe_allow_html=True)
 
         if uploaded_file:
             try:
