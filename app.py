@@ -489,7 +489,7 @@ elif st.session_state.global_page == "FP-Growth":
                         # RINGKASAN KOMBINASI 1 ➞ 1 TANPA PENJELASAN (DALAM SATU CARD)
                         st.markdown("---")
                         st.markdown(
-                            "**Rekomendasi Kombinasi Produk 1 ➞ 1 (Tanpa Penjelasan)**"
+                            "**Rekomendasi Kombinasi Produk 1 ➞ 1 (Tanpa Penjelasan Top 10)**"
                         )
 
                         # Ambil semua data ringkasan dan urutkan berdasarkan indeks
@@ -516,7 +516,7 @@ elif st.session_state.global_page == "FP-Growth":
                         st.markdown("<br>", unsafe_allow_html=True)
                         # Expander untuk tampilkan lebih banyak
                         with st.expander(
-                            "**Tampilkan Semua Aturan (Tanpa Penjelasan Top 10)**"
+                            "**Tampilkan Semua Aturan (Tanpa Penjelasan)**"
                         ):
                             semua_text = ""
                             for idx, row in ringkasan_rows.iterrows():
