@@ -147,11 +147,11 @@ elif st.session_state.global_page == "FP-Growth":
     with st.sidebar:
         st.image("static/logoo.png", width=230)
 
-        st.markdown("**Menu Navigasi**")
+        st.markdown("**Navigasi Utama**")
         menu_options = {
-            "Upload File": "📤 Upload File",
+            "Upload File": "📤 Upload Data",
             "Data Transaksi": "📋 Data Transaksi",
-            "FP-Growth Analisis": "📈 Analisis",
+            "FP-Growth Analisis": "📈 Analisis Data",
         }
 
         selected_menu = st.radio(
@@ -164,6 +164,8 @@ elif st.session_state.global_page == "FP-Growth":
         )
         st.session_state.page = selected_menu
         page = selected_menu
+        
+        st.markdown("<div style='margin-bottom: 15px;'></div>", unsafe_allow_html=True)
 
         st.markdown("**Analisis Berdasarkan**")
         basis_options = {
