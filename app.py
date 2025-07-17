@@ -516,7 +516,7 @@ elif st.session_state.global_page == "FP-Growth":
                         st.markdown("<br>", unsafe_allow_html=True)
                         # Expander untuk tampilkan lebih banyak
                         with st.expander(
-                            "**Tampilkan Semua Aturan (Tanpa Penjelasan)**"
+                            "**Tampilkan Semua Aturan (Tanpa Penjelasan Top 10)**"
                         ):
                             semua_text = ""
                             for idx, row in ringkasan_rows.iterrows():
@@ -536,4 +536,4 @@ elif st.session_state.global_page == "FP-Growth":
                         f"Proses FP-Growth gagal, tidak ditemukan kombinasi produk yang sering dibeli bersamaan / aturan asosiasi"
                     )
                 except Exception as e:
-                    st.error(f"Terjadi kesalahan tidak terduga")
+                    st.error(f"Tidak Ditemukan")
