@@ -151,7 +151,7 @@ elif st.session_state.global_page == "FP-Growth":
         menu_options = {
             "Upload File": "📤 Upload File",
             "Data Transaksi": "📋 Data Transaksi",
-            "FP-Growth Analisis": "📈 FP-Growth Analisis",
+            "FP-Growth Analisis": "📈 Analisis",
         }
 
         selected_menu = st.radio(
