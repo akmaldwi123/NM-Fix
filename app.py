@@ -164,7 +164,7 @@ elif st.session_state.global_page == "FP-Growth":
         )
         st.session_state.page = selected_menu
         page = selected_menu
-        
+
         st.markdown("<div style='margin-bottom: 15px;'></div>", unsafe_allow_html=True)
 
         st.markdown("**Analisis Berdasarkan**")
