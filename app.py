@@ -110,7 +110,7 @@ elif st.session_state.global_page == "Sales and Inventory":
         height=600,
         width=1200,
     )
-# &navContentPaneEnabled=false&filterPaneEnabled=false&toolbarHidden=true"
+
 # ========== FP-GROWTH PAGE ==========
 elif st.session_state.global_page == "FP-Growth":
     # Inisialisasi session state
