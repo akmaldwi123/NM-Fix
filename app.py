@@ -107,7 +107,7 @@ elif st.session_state.global_page == "Sales and Inventory":
 
     components.iframe(
         "https://app.powerbi.com/view?r=eyJrIjoiYjViM2Q4NzMtM2U0Ny00OWM4LWJjNjUtZTFjN2M5YTEzODAwIiwidCI6IjkwYWZmZTBmLWMyYTMtNDEwOC1iYjk4LTZjZWI0ZTk0ZWYxNSIsImMiOjEwfQ%3D%3D&navContentPaneEnabled=false&filterPaneEnabled=false&toolbarHidden=true",
-        height=600,
+        height=628,
         width=1200,
     )
 
