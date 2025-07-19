@@ -58,6 +58,33 @@ button,
   align-items: center;
 }
 
+/* Untuk perbaikan responsif di layar kecil */
+@media (max-width: 768px) {
+  .landing-title {
+    font-size: 2rem;
+    text-align: center;
+  }
+
+  .landing-desc {
+    text-align: left;
+  }
+
+  .landing-buttons-left {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .landing-text {
+    text-align: center;
+  }
+  
+}
+
 /* card style */
 .card {
   background-color: #ffffff;
@@ -152,3 +179,46 @@ button,
   font-family: monospace;
   font-size: 14px;
 }
+
+/* Layout responsif untuk landing page */
+/* .landing-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    padding: 2rem 1rem;
+}
+
+/* Layout besar (desktop/laptop) */
+/* @media (min-width: 768px) {
+    .landing-container {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .landing-text {
+        max-width: 60%;
+    }
+
+    .landing-image {
+        max-width: 35%;
+        text-align: right;
+    }
+} */
+
+/* .landing-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #00796b;
+    margin-bottom: 1rem;
+}
+
+.landing-desc {
+    font-size: 1.1rem;
+    color: #444;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+/* } */ 
+
+/*  */

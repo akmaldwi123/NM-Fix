@@ -105,11 +105,18 @@ elif st.session_state.global_page == "Sales and Inventory":
         )
         st.rerun()
 
-    components.iframe(
-        "https://app.powerbi.com/view?r=eyJrIjoiYjViM2Q4NzMtM2U0Ny00OWM4LWJjNjUtZTFjN2M5YTEzODAwIiwidCI6IjkwYWZmZTBmLWMyYTMtNDEwOC1iYjk4LTZjZWI0ZTk0ZWYxNSIsImMiOjEwfQ%3D%3D&navContentPaneEnabled=false&filterPaneEnabled=false&toolbarHidden=true",
-        height=628,
-        width=1200,
-    )
+    powerbi_html = """
+    <div style="position: relative; width: 100%; height: 0; padding-bottom: 56%;">
+    <iframe src="https://app.powerbi.com/view?r=eyJrIjoiYjViM2Q4NzMtM2U0Ny00OWM4LWJjNjUtZTFjN2M5YTEzODAwIiwidCI6IjkwYWZmZTBmLWMyYTMtNDEwOC1iYjk4LTZjZWI0ZTk0ZWYxNSIsImMiOjEwfQ%3D%3D&navContentPaneEnabled=false&filterPaneEnabled=false&toolbarHidden=true"
+        frameborder="0"
+        allowFullScreen="true"
+        style="position: absolute; top:0; left: 0; width: 100%; height: 100%;">
+    </iframe>
+    </div>
+    """
+
+    components.html(powerbi_html, height=600)
+
 
 # ========== FP-GROWTH PAGE ==========
 elif st.session_state.global_page == "FP-Growth":

@@ -70,7 +70,7 @@ def run_fp_growth(df_transaksi, kolom_produk="nama_produk"):
             return (
                 f"**Kombinasi produk “{', '.join(list(row['antecedents']))} → {', '.join(list(row['consequents']))}” memiliki:**\n\n"
                 f"- **Support** sebesar **{row['support']:.2%}**, artinya kombinasi ini muncul sebanyak {row['support']:.2%} dari total seluruh transaksi\n"
-                f"- **Confidence** sebesar **{row['confidence']:.2%}**, mmenunjukkan bahwa dari semua transaksi yang mengandung produk awal, "
+                f"- **Confidence** sebesar **{row['confidence']:.2%}**, menunjukkan bahwa dari semua transaksi yang mengandung produk awal, "
                 f"sebanyak {row['confidence']:.2%} di antaranya juga membeli produk disarankan\n"
                 f"- **Lift** sebesar **{row['lift']:.2f}**, berarti probabilitas pembelian produk awal dan produk disarankan secara bersamaan adalah "
                 f"{row['lift']:.2f} kali lebih tinggi dibandingkan jika pembelian tersebut terjadi secara kebetulan atau tidak saling terkait\n\n"
