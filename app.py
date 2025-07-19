@@ -106,7 +106,7 @@ elif st.session_state.global_page == "Sales and Inventory":
         st.rerun()
 
     powerbi_html = """
-    <div style="position: relative; width: 100%; height: 0; padding-bottom: 56.25%;">
+    <div style="position: relative; width: 100%; height: 0; padding-bottom: 57%;">
     <iframe src="https://app.powerbi.com/view?r=eyJrIjoiYjViM2Q4NzMtM2U0Ny00OWM4LWJjNjUtZTFjN2M5YTEzODAwIiwidCI6IjkwYWZmZTBmLWMyYTMtNDEwOC1iYjk4LTZjZWI0ZTk0ZWYxNSIsImMiOjEwfQ%3D%3D&navContentPaneEnabled=false&filterPaneEnabled=false&toolbarHidden=true"
         frameborder="0"
         allowFullScreen="true"
